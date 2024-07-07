@@ -17,7 +17,7 @@ def get_requirements(file_path:str)->List[str]:
     return requirements
         
 setup(
- name='EmployeeAttritionPrediction',
+ name='Project',
  version='0.0.1',
  author='Saxam Rawat',
  author_email='saxamrawat@gmail.com',
