@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Insurance Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            color: #555;
+        }
+        input, select {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result, .error {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .result {
+            background-color: #e7f4e4;
+            color: #2d7a2d;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Vehicle Insurance Cross-Sell</h1>
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="driving_license">Driving License:</label>
+            <select id="driving_license" name="driving_license">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="region_code">Region Code:</label>
+            <input type="number" id="region_code" name="region_code" required>
+
+            <label for="previously_insured">Previously Insured:</label>
+            <select id="previously_insured" name="previously_insured">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="vehicle_age">Vehicle Age:</label>
+            <select id="vehicle_age" name="vehicle_age">
+                <option value="< 1 Year">Less than 1 Year</option>
+                <option value="1-2 Year">1-2 Year</option>
+                <option value="> 2 Years">Greater than 2 Years</option>
+            </select>
+
+            <label for="vehicle_damage">Vehicle Damage:</label>
+            <select id="vehicle_damage" name="vehicle_damage">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+
+            <label for="annual_premium">Annual Premium:</label>
+            <input type="number" id="annual_premium" name="annual_premium" step="0.01" required>
+
+            <label for="policy_sales_channel">Policy Sales Channel:</label>
+            <input type="number" id="policy_sales_channel" name="policy_sales_channel" required>
+
+            <label for="vintage">Vintage:</label>
+            <input type="number" id="vintage" name="vintage" required>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if results is defined %}
+            <div class="result">
+                <h2>Prediction Result: {{ results }}</h2>
+            </div>
+        {% elif error is defined %}
+            <div class="error">
+                <h2>Error: {{ error }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
