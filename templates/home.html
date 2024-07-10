@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Insurance Prediction</title>
+    <title>Insurance Cross Sell Prediction</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -120,9 +120,13 @@
         </form>
 
         {% if results is defined %}
-            <div class="result">
-                <h2>Prediction Result: {{ results }}</h2>
-            </div>
+        <div class="result">
+            {% if results == 0.0 %}
+                <h2>This client will not be interested.</h2>
+            {% elif results == 1.0 %}
+                <h2>This client will be interested.</h2>
+            {% endif %}
+        </div>
         {% elif error is defined %}
             <div class="error">
                 <h2>Error: {{ error }}</h2>
