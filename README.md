@@ -38,12 +38,6 @@ The goal is to build a machine learning model to predict the `Response` variable
 3. **Model Selection**: Choosing appropriate algorithms and tuning hyperparameters.
 4. **Evaluation**: Assessing model performance using metrics like accuracy, precision, recall, and F1 score.
 
-## AWS Deployment
-
-The model is deployed on AWS to enable scalable and reliable predictions. You can access the deployment via the following links:
-
-- **Deployment Link: http://crosssellprediction-env.eba-dummta2v.ap-southeast-2.elasticbeanstalk.com/
-
 ## Getting Started
 
 To get started with the project, clone the repository and follow the setup instructions:
